@@ -13,6 +13,8 @@
 @property (strong, nonatomic) IBOutlet CanvasView *canvasView;
 @property (strong, nonatomic) UISlider *colorSlider;
 
+@property (strong, nonatomic) IBOutlet UIView *colorDisplay;
+
 @end
 
 @implementation ViewController
@@ -70,6 +72,7 @@
 
 - (void)colorChanger:(UISlider *)sender {
     [self.canvasView changeColor:sender.value];
+    self.colorDisplay.backgroundColor = [UIColor colorWithHue:sender.value saturation:1.0 brightness:1.0 alpha:1.0];
 }
 
 - (IBAction)panGestureHandle:(UIPanGestureRecognizer *)sender {

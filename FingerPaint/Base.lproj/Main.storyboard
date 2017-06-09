@@ -38,11 +38,21 @@
                                             <action selector="toggleColorSlider:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g45-lt-040"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsA-mt-Xcc">
+                                        <rect key="frame" x="267" y="10" width="50" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="ZKR-ZY-w8q"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.87904188368055558" alpha="0.25904323630136988" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="GqU-wm-mw9" firstAttribute="centerY" secondItem="6yQ-CJ-oMc" secondAttribute="centerY" id="LXe-40-Pst"/>
+                                    <constraint firstItem="bsA-mt-Xcc" firstAttribute="centerY" secondItem="6yQ-CJ-oMc" secondAttribute="centerY" id="Ln6-MQ-ISs"/>
                                     <constraint firstAttribute="height" constant="50" id="RDy-Ec-1Q8"/>
+                                    <constraint firstItem="bsA-mt-Xcc" firstAttribute="height" secondItem="GqU-wm-mw9" secondAttribute="height" id="f4m-7N-lYu"/>
+                                    <constraint firstItem="bsA-mt-Xcc" firstAttribute="trailing" secondItem="GqU-wm-mw9" secondAttribute="leading" constant="-5" id="nii-IH-NdM"/>
                                     <constraint firstAttribute="trailing" secondItem="GqU-wm-mw9" secondAttribute="trailing" constant="8" id="uvC-Li-NzV"/>
                                 </constraints>
                             </view>
@@ -61,6 +71,7 @@
                     </view>
                     <connections>
                         <outlet property="canvasView" destination="vcE-DV-3Wp" id="THa-e7-cus"/>
+                        <outlet property="colorDisplay" destination="bsA-mt-Xcc" id="rBd-Vo-xgk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
