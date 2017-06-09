@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface CanvasView : UIView
+
+- (void)changeColor:(CGFloat)hue;
 
 - (void)widthChangeFromVelocity:(CGPoint)velocity;
 
@@ -16,6 +17,6 @@
 
 - (void)beginStrokeAtPoint:(CGPoint)point;
 
-- (void)nextPath;
+//- (void)nextPath;
 
 @end
