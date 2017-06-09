@@ -30,14 +30,18 @@
 
 - (IBAction)panGestureHandle:(UIPanGestureRecognizer *)sender {
     CGPoint point = [sender locationInView:self.canvasView];
+    
     if (sender.state == UIGestureRecognizerStateBegan) {
         
         [self.canvasView beginStrokeAtPoint:point];
         
     } else if (sender.state == UIGestureRecognizerStateChanged) {
-        
+        CGPoint velocity = [sender velocityInView:self.canvasView];
+        [self.canvasView widthChangeFromVelocity:velocity];
         [self.canvasView addPointToStroke:point];
         
+    } else {
+        [self.canvasView nextPath];
     }
 }
 

@@ -10,8 +10,12 @@
 
 @interface CanvasView : UIView
 
+- (void)widthChangeFromVelocity:(CGPoint)velocity;
+
 - (void)addPointToStroke:(CGPoint)point;
 
 - (void)beginStrokeAtPoint:(CGPoint)point;
+
+- (void)nextPath;
 
 @end

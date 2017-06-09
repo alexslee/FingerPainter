@@ -10,8 +10,13 @@
 
 @interface CanvasView ()
 
-@property (strong, nonatomic)UIBezierPath *path;
+@property (strong, nonatomic)UIBezierPath *currentPath;
 
+@property (assign)NSInteger pathCount;
+
+@property (strong, nonatomic)NSMutableArray *paths;
+
+@property (nonatomic)CGFloat width;
 @end
 
 @implementation CanvasView
@@ -19,32 +24,50 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder;
 {
     if (self == [super initWithCoder:aDecoder]) {
-        _path = [[UIBezierPath alloc] init];
-        [_path setLineWidth:5.0];
+        _currentPath = [[UIBezierPath alloc] init];
+        _pathCount = 0;
+        _paths = [[NSMutableArray alloc] init];
+        _width = 5.0;
         self.backgroundColor = [UIColor whiteColor];
         [[UIColor blackColor] setStroke];
     }
     return self;
 }
 
+- (void)widthChangeFromVelocity:(CGPoint)velocity;
+{
+    self.width = 5.0;
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-    [self.path stroke];
+//    NSLog(@"width of stroke: %.2lf || width property: %.2lf",self.currentPath.lineWidth,self.width);
+    for (UIBezierPath *path in self.paths) {
+        [path stroke];
+    }
 }
 
 - (void)addPointToStroke:(CGPoint)point;
 {
-    [self.path addLineToPoint:point];
-    NSLog(@"continuing to draw");
+    [self.currentPath addLineToPoint:point];
+    //NSLog(@"continuing to draw");
     [self setNeedsDisplay];
 }
 
 - (void)beginStrokeAtPoint:(CGPoint)point;
 {
     NSLog(@"beginning to draw");
-    [self.path moveToPoint:point];
+    UIBezierPath *path = [[UIBezierPath alloc] init];
+    [self.paths addObject:path];
+    self.currentPath = [self.paths objectAtIndex:self.pathCount];
+    [self.currentPath moveToPoint:point];
+}
+
+- (void)nextPath;
+{
+    self.pathCount++;
 }
 
 @end
